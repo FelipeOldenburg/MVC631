@@ -24,6 +24,13 @@ header {
     color: white;
     padding: 1rem 2rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header h1 {
@@ -41,7 +48,7 @@ header nav a {
     text-decoration: none;
     margin-right: 2rem;
     font-weight: 500;
-    transition: color 0.3s;
+    transition: color 0.3s;;
 }
 
 header nav a:hover {
@@ -60,13 +67,14 @@ main {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 2rem;
+    margin-top: 7rem; /* Para compensar o header fixo */
 }
 
 h1 {
     color: #2c3e50;
     margin-bottom: 1.5rem;
     border-bottom: 3px solid #3498db;
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.1rem;
 }
 
 h2 {

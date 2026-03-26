@@ -21,3 +21,26 @@ app.get("/", (req, res) => {
 app.use(produtoRoutes);
 
 app.listen(3000, () => console.log("Servidor rodando na porta 3000"));
+
+// ...existing code...
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+    const os = require('os');
+    const interfaces = os.networkInterfaces();
+    let localIP = 'localhost';
+    
+    for (const name of Object.keys(interfaces)) {
+        for (const iface of interfaces[name]) {
+            if (iface.family === 'IPv4' && !iface.internal) {
+                localIP = iface.address;
+                break;
+            }
+        }
+    }
+    
+    console.log(`\n✅ Servidor rodando!\n`);
+    console.log(`📱 Local:   http://localhost:${PORT}`);
+    console.log(`🌐 Network: http://${localIP}:${PORT}\n`);
+});

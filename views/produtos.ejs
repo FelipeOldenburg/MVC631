@@ -1,0 +1,51 @@
+<%- include('partials/header', { title: 'Lista de Produtos' }) %>
+
+<h1>Produtos</h1>
+
+<% if (produtos.length === 0) { %>
+    <p style="color: #e74c3c; font-weight: bold;">Nenhum produto cadastrado ainda.</p>
+<% } else { %>
+    <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; margin: 2rem 0;">
+            <thead>
+                <tr style="background-color: #34495e; color: white;">
+                    <th style="padding: 1rem; text-align: left; border: 1px solid #ddd;">ID</th>
+                    <th style="padding: 1rem; text-align: left; border: 1px solid #ddd;">Nome</th>
+                    <th style="padding: 1rem; text-align: left; border: 1px solid #ddd;">Descrição</th>
+                    <th style="padding: 1rem; text-align: left; border: 1px solid #ddd;">Preço</th>
+                    <th style="padding: 1rem; text-align: center; border: 1px solid #ddd;">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% produtos.forEach(produto => { %>
+                    <tr style="border: 1px solid #ddd;">
+                        <td style="padding: 1rem; border: 1px solid #ddd;"><strong>#<%= produto.id %></strong></td>
+                        <td style="padding: 1rem; border: 1px solid #ddd;"><%= produto.nome %></td>
+                        <td style="padding: 1rem; border: 1px solid #ddd;"><%= produto.descricao %></td>
+                        <td style="padding: 1rem; border: 1px solid #ddd; color: #27ae60; font-weight: bold;"><%= produto.preco %></td>
+                        <td style="padding: 1rem; border: 1px solid #ddd; text-align: center;">
+                            <a href="/produtos/edit/<%= produto.id %>" style="background-color: #f39c12; color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; margin-right: 0.5rem;">Editar</a>
+                            <a href="/produtos/delete/<%= produto.id %>" style="background-color: #e74c3c; color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none;" onclick="return confirm('Tem certeza que deseja deletar este produto?');">Deletar</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+<% } %>
+
+<h2>Adicionar Novo Produto</h2>
+<form action="/produtos" method="POST">
+   <label for="nome">Nome do Produto:</label>
+   <input type="text" id="nome" name="nome" placeholder="Digite o nome do produto" required>
+   
+   <label for="descricao">Descrição:</label>
+   <textarea id="descricao" name="descricao" placeholder="Digite uma descrição do produto" required></textarea>
+   
+   <label for="preco">Preço:</label>
+   <input type="text" id="preco" name="preco" placeholder="Ex: R$ 100,00" required>
+   
+   <button type="submit">Adicionar Produto</button>
+</form>
+
+<%- include('partials/footer') %>

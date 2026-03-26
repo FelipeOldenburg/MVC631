@@ -1,0 +1,40 @@
+<%- include('partials/header', { title: 'Sobre' }) %>
+
+<h1>Sobre Nós</h1>
+
+<p>Bem-vindo ao nosso sistema de gerenciamento de produtos! Esta é uma aplicação desenvolvida com a arquitetura <strong>MVC (Model-View-Controller)</strong> utilizando <strong>Node.js</strong> e <strong>Express</strong>.</p>
+
+<h2>Objetivo da Aplicacao</h2>
+<p>Consolidar a compreensão sobre a separação de responsabilidades em aplicações web, demonstrando boas práticas de roteamento e manipulação de dados em memória.</p>
+
+<h2>Funcionalidades</h2>
+<ul>
+   <li>Listar todos os produtos cadastrados</li>
+   <li>Adicionar novos produtos</li>
+   <li>Editar informações de produtos existentes</li>
+   <li>Deletar produtos da lista</li>
+   <li>Formulário de contato</li>
+</ul>
+
+<h2>Arquitetura do Projeto</h2>
+<p>O projeto segue o padrão MVC:</p>
+<ul>
+   <li><strong>Models:</strong> Define a estrutura dos dados (produtos)</li>
+   <li><strong>Views:</strong> Páginas EJS que exibem os dados ao usuário</li>
+   <li><strong>Controllers:</strong> Lógica de negócio e tratamento de requisições</li>
+</ul>
+
+<h2>Armazenamento de Dados</h2>
+<p>Os dados são armazenados em uma lista (array) em memória do servidor. Isso permite uma aplicação rápida e didática para fins educacionais.</p>
+
+<div style="background-color: #ecf0f1; padding: 1.5rem; margin-top: 2rem; border-radius: 5px;">
+   <h3>Tecnologias Utilizadas</h3>
+   <ul style="list-style: none; padding: 0;">
+      <li>Node.js - Runtime JavaScript para servidor</li>
+      <li>Express - Framework web minimalista</li>
+      <li>EJS - Template engine para views</li>
+      <li>CSS - Estilização profissional</li>
+   </ul>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,28 @@
+<%- include('partials/header', { title: 'Home' }) %>
+
+<h1>Bem-vindo ao Sistema de Gerenciamento de Produtos</h1>
+
+<p>Esta é uma aplicação desenvolvida com a arquitetura MVC (Model-View-Controller) utilizando Node.js e Express.</p>
+
+<div style="background-color: #ecf0f1; padding: 2rem; margin: 2rem 0; border-radius: 5px;">
+    <h2>O que você pode fazer?</h2>
+    <ul>
+        <li>Visualizar e gerenciar produtos cadastrados</li>
+        <li>Adicionar novos produtos</li>
+        <li>Editar informações de produtos</li>
+        <li>Remover produtos da lista</li>
+        <li>Enviar mensagens através do formulário de contato</li>
+    </ul>
+</div>
+
+<div style="text-align: center; margin: 2rem 0;">
+    <h3>Comece agora:</h3>
+    <a href="/produtos" style="background-color: #3498db; color: white; padding: 1rem 2rem; border-radius: 4px; text-decoration: none; font-size: 1.1rem;">Acessar Produtos</a>
+</div>
+
+<div style="background-color: #d5dbdb; padding: 1.5rem; margin: 2rem 0; border-radius: 5px; border-left: 4px solid #2c3e50;">
+    <h3>Sobre o Projeto</h3>
+    <p>Este projeto foi desenvolvido para demonstrar boas práticas em desenvolvimento web com Node.js, seguindo os padrões MVC e utilizando Express como framework principal. Os dados são armazenados em memória, tornando a aplicação leve e rápida para fins educacionais.</p>
+</div>
+
+<%- include('partials/footer') %>

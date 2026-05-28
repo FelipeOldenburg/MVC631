@@ -1,7 +1,10 @@
 const express = require("express");
 const path = require("path");
+const session = require("express-session");
 const app = express();
+const authRoutes = require("./routes/authRoutes");
 const produtoRoutes = require("./routes/produtoRoutes");
+const requireAuth = require("./middlewares/auth");
 const bodyParser = require("body-parser");
 
 // Configura a pasta 'public' como estática
@@ -13,16 +16,36 @@ app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use((req, res, next) => {
+    res.set("Cache-Control", "no-store, no-cache, must-revalidate, private");
+    res.set("Pragma", "no-cache");
+    res.set("Expires", "0");
+    next();
+});
+
+app.use(session({
+    secret: "mvc631-session-secret",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        httpOnly: true,
+        maxAge: 1000 * 60 * 30
+    }
+}));
+
+app.use((req, res, next) => {
+    res.locals.user = req.session.user || null;
+    next();
+});
+
+app.use(authRoutes);
+
 // Rota para HOME
-app.get("/", (req, res) => {
+app.get("/", requireAuth, (req, res) => {
   res.render("index", { title: "Home" });
 });
 
-app.use(produtoRoutes);
-
-app.listen(3000, () => console.log("Servidor rodando na porta 3000"));
-
-// ...existing code...
+app.use(requireAuth, produtoRoutes);
 
 const PORT = process.env.PORT || 3000;
 

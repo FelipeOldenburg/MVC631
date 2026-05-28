@@ -3,17 +3,34 @@
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, private">
+      <meta http-equiv="Pragma" content="no-cache">
+      <meta http-equiv="Expires" content="0">
       <title><%= title || "Meu Projeto MVC" %></title>
       <link rel="stylesheet" href="/css/style.css">
+      <script>
+         window.addEventListener("pageshow", function (event) {
+            if (event.persisted) {
+               window.location.reload();
+            }
+         });
+      </script>
    </head>
    <body>
       <header>
          <h1>Gerenciamento de Produtos</h1>
          <nav>
-            <a href="/">Home</a>
-            <a href="/produtos">Produtos</a>
-            <a href="/about">Sobre</a>
-            <a href="/contact">Contato</a>
+            <% if (user) { %>
+               <a href="/">Home</a>
+               <a href="/produtos">Produtos</a>
+               <a href="/about">Sobre</a>
+               <a href="/contact">Contato</a>
+               <form action="/logout" method="POST" class="logout-form">
+                  <button type="submit">Sair</button>
+               </form>
+            <% } else { %>
+               <a href="/login">Login</a>
+            <% } %>
          </nav>
       </header>
       <main>

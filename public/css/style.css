@@ -41,18 +41,36 @@ header h1 {
 
 header nav {
     margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 header nav a {
     color: white;
     text-decoration: none;
-    margin-right: 2rem;
     font-weight: 500;
     transition: color 0.3s;;
 }
 
 header nav a:hover {
     color: #3498db;
+}
+
+.logout-form {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+.logout-form button {
+    background-color: #e74c3c;
+    padding: 0.5rem 1rem;
+    margin: 0;
+}
+
+.logout-form button:hover {
+    background-color: #c0392b;
 }
 
 /* ===============================================
@@ -138,6 +156,33 @@ form button:hover {
     background-color: #2980b9;
 }
 
+.login-page {
+    display: flex;
+    justify-content: center;
+}
+
+.login-box {
+    width: 100%;
+    max-width: 420px;
+}
+
+.error-message {
+    background-color: #fdecea;
+    border-left: 4px solid #e74c3c;
+    color: #c0392b;
+    margin: 1rem 0;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.login-hint {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
 /* ===============================================
    Listas
    =============================================== */
@@ -211,5 +256,11 @@ footer p {
     header nav a {
         display: block;
         margin-bottom: 0.5rem;
+    }
+
+    header nav {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.5rem;
     }
 }

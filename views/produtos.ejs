@@ -22,7 +22,7 @@
                         <td style="padding: 1rem; border: 1px solid #ddd;"><strong>#<%= produto.id %></strong></td>
                         <td style="padding: 1rem; border: 1px solid #ddd;"><%= produto.nome %></td>
                         <td style="padding: 1rem; border: 1px solid #ddd;"><%= produto.descricao %></td>
-                        <td style="padding: 1rem; border: 1px solid #ddd; color: #27ae60; font-weight: bold;"><%= produto.preco %></td>
+                        <td style="padding: 1rem; border: 1px solid #ddd; color: #27ae60; font-weight: bold;"><%= formatarPreco(produto.preco) %></td>
                         <td style="padding: 1rem; border: 1px solid #ddd; text-align: center;">
                             <a href="/produtos/edit/<%= produto.id %>" style="background-color: #f39c12; color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none; margin-right: 0.5rem;">Editar</a>
                             <a href="/produtos/delete/<%= produto.id %>" style="background-color: #e74c3c; color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none;" onclick="return confirm('Tem certeza que deseja deletar este produto?');">Deletar</a>
@@ -43,7 +43,7 @@
    <textarea id="descricao" name="descricao" placeholder="Digite uma descrição do produto" required></textarea>
    
    <label for="preco">Preço:</label>
-   <input type="text" id="preco" name="preco" placeholder="Ex: R$ 100,00" required>
+   <input type="text" id="preco" name="preco" placeholder="Ex: 100,00" inputmode="decimal" required>
    
    <button type="submit">Adicionar Produto</button>
 </form>

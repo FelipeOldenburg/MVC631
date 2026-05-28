@@ -1,14 +1,22 @@
-const { Produto, produtos } = require("../models/produtoModel");
+const {
+    Produto,
+    produtos,
+    gerarProximoProdutoId,
+    converterPrecoParaCentavos,
+    formatarPreco,
+    formatarPrecoParaInput
+} = require("../models/produtoModel");
 
 // Listar todos os produtos
 exports.getProdutos = (req, res) => {
-    res.render("produtos", { produtos });
+    res.render("produtos", { produtos, formatarPreco });
 };
 
 // Criar um novo produto
 exports.createProduto = (req, res) => {
     const { nome, descricao, preco } = req.body;
-    const novoProduto = new Produto(produtos.length + 1, nome, descricao, preco);
+    const precoEmCentavos = converterPrecoParaCentavos(preco);
+    const novoProduto = new Produto(gerarProximoProdutoId(), nome, descricao, precoEmCentavos);
     produtos.push(novoProduto);
     res.redirect("/produtos");
 };
@@ -20,7 +28,7 @@ exports.getEditProduto = (req, res) => {
     if (!produto) {
         return res.status(404).send("Produto não encontrado");
     }
-    res.render("editProduto", { produto });
+    res.render("editProduto", { produto, formatarPrecoParaInput });
 };
 
 // Atualizar produto
@@ -32,7 +40,7 @@ exports.updateProduto = (req, res) => {
     if (produto) {
         produto.nome = nome;
         produto.descricao = descricao;
-        produto.preco = preco;
+        produto.preco = converterPrecoParaCentavos(preco);
     }
     
     res.redirect("/produtos");

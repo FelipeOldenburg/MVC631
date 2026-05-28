@@ -1,0 +1,26 @@
+<%- include('partials/header', { title, user: null }) %>
+
+<section class="login-page">
+   <div class="login-box">
+      <h1>Entrar no Sistema</h1>
+      <p>Acesse sua conta para gerenciar os produtos.</p>
+
+      <% if (error) { %>
+         <div class="error-message"><%= error %></div>
+      <% } %>
+
+      <form action="/login" method="POST">
+         <label for="email">E-mail:</label>
+         <input type="email" id="email" name="email" placeholder="admin@email.com" required>
+
+         <label for="senha">Senha:</label>
+         <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+
+         <button type="submit">Entrar</button>
+      </form>
+
+      <p class="login-hint">Usuario de teste: admin@email.com / 123456</p>
+   </div>
+</section>
+
+<%- include('partials/footer') %>

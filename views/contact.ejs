@@ -1,39 +1,43 @@
 <%- include('partials/header', { title: 'Contato' }) %>
 
-<h1>Entre em Contato</h1>
+<section class="page-heading">
+   <p class="eyebrow">Atendimento</p>
+   <h1>Entre em Contato</h1>
+   <p>Preencha o formulario abaixo e entraremos em contato o mais breve possivel.</p>
+</section>
 
-<p>Temos prazer em ouvir de você! Preencha o formulário abaixo e entraremos em contato o mais breve possível.</p>
+<section class="form-panel">
+   <form>
+      <label for="nome">Nome Completo:</label>
+      <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+      
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+      
+      <label for="telefone">Telefone (Opcional):</label>
+      <input type="tel" id="telefone" name="telefone" placeholder="Digite seu telefone">
+      
+      <label for="assunto">Assunto:</label>
+      <select id="assunto" name="assunto" required>
+         <option value="">Selecione um assunto</option>
+         <option value="duvida">Duvida</option>
+         <option value="sugestao">Sugestao</option>
+         <option value="reclamacao">Reclamacao</option>
+         <option value="outro">Outro</option>
+      </select>
+      
+      <label for="mensagem">Mensagem:</label>
+      <textarea id="mensagem" name="mensagem" placeholder="Digite sua mensagem aqui" required></textarea>
+      
+      <button type="submit">Enviar Mensagem</button>
+   </form>
+</section>
 
-<form>
-   <label for="nome">Nome Completo:</label>
-   <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
-   
-   <label for="email">E-mail:</label>
-   <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
-   
-   <label for="telefone">Telefone (Opcional):</label>
-   <input type="tel" id="telefone" name="telefone" placeholder="Digite seu telefone">
-   
-   <label for="assunto">Assunto:</label>
-   <select id="assunto" name="assunto" required>
-      <option value="">-- Selecione um assunto --</option>
-      <option value="duvida">Duvida</option>
-      <option value="sugestao">Sugestao</option>
-      <option value="reclamacao">Reclamacao</option>
-      <option value="outro">Outro</option>
-   </select>
-   
-   <label for="mensagem">Mensagem:</label>
-   <textarea id="mensagem" name="mensagem" placeholder="Digite sua mensagem aqui" required></textarea>
-   
-   <button type="submit">Enviar Mensagem</button>
-</form>
-
-<div style="background-color: #ecf0f1; padding: 2rem; margin-top: 2rem; border-radius: 5px;">
+<section class="info-panel">
    <h2>Informacoes de Contato</h2>
    <p><strong>Email:</strong> contato@exemplo.com.br</p>
    <p><strong>Telefone:</strong> (11) 3000-0000</p>
    <p><strong>Localizacao:</strong> Sao Paulo, SP</p>
-</div>
+</section>
 
 <%- include('partials/footer') %>

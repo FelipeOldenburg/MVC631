@@ -1,19 +1,26 @@
 <%- include('partials/header', { title: 'Editar Produto' }) %>
 
-<h1>Editar Produto</h1>
+<section class="page-heading">
+   <p class="eyebrow">Produto #<%= produto.id %></p>
+   <h1>Editar Produto</h1>
+</section>
 
-<form action="/produtos/edit/<%= produto.id %>" method="POST">
-   <label for="nome">Nome do Produto:</label>
-   <input type="text" id="nome" name="nome" value="<%= produto.nome %>" required>
-   
-   <label for="descricao">Descrição:</label>
-   <textarea id="descricao" name="descricao" required><%= produto.descricao %></textarea>
-   
-   <label for="preco">Preço:</label>
-   <input type="text" id="preco" name="preco" value="<%= formatarPrecoParaInput(produto.preco) %>" inputmode="decimal" required>
-   
-   <button type="submit">Salvar Alterações</button>
-   <a href="/produtos" style="background-color: #95a5a6; color: white; padding: 0.75rem 2rem; border: none; border-radius: 4px; text-decoration: none; margin-left: 1rem;">Cancelar</a>
-</form>
+<section class="form-panel">
+   <form action="/produtos/edit/<%= produto.id %>" method="POST">
+      <label for="nome">Nome do Produto:</label>
+      <input type="text" id="nome" name="nome" value="<%= produto.nome %>" required>
+      
+      <label for="descricao">Descricao:</label>
+      <textarea id="descricao" name="descricao" required><%= produto.descricao %></textarea>
+      
+      <label for="preco">Preco:</label>
+      <input type="text" id="preco" name="preco" value="<%= formatarPrecoParaInput(produto.preco) %>" inputmode="decimal" required>
+      
+      <div class="form-actions">
+         <button type="submit">Salvar Alteracoes</button>
+         <a href="/produtos" class="button-muted">Cancelar</a>
+      </div>
+   </form>
+</section>
 
 <%- include('partials/footer') %>
